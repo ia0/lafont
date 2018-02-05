@@ -5,3 +5,7 @@ authors = ["Julien Cretin <cretin@google.com>"]
 license = "Apache-2.0"
 
 [dependencies]
+getopts = "0.2"
+kiss3d = "0.12"
+nalgebra = "0.13"
+rand = "0.4"
