@@ -12,7 +12,7 @@ This is not an official Google product.
 
 ## How to install
 
-You can install the latest version released on https://crates.io/ with:
+You can install the latest version released on https://crates.io/crates/lafont with:
 
     cargo install lafont
 

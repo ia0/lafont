@@ -3,6 +3,9 @@ name = "lafont"
 version = "0.0.1"
 authors = ["Julien Cretin <cretin@google.com>"]
 license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/ia0/lafont"
+description = "Animation of Yves Lafont's Interaction Combinators"
 
 [dependencies]
 getopts = "0.2"
