@@ -6,6 +6,7 @@ license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/ia0/lafont"
 description = "Animation of Yves Lafont's Interaction Combinators"
+include = ["Cargo.toml", "LICENSE", "README.md", "src/main.rs"]
 
 [dependencies]
 getopts = "0.2"
