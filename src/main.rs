@@ -305,9 +305,9 @@ impl Net {
                         continue;
                     }
                     self.window.draw_line(
-                        &Point3::from_coordinates(n.position()),
-                        &Point3::from_coordinates(self.node(b).position()),
-                        &Point3::from_coordinates(color),
+                        &Point3::from(n.position()),
+                        &Point3::from(self.node(b).position()),
+                        &Point3::from(color),
                     );
                 }
             }
