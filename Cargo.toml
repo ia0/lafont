@@ -10,6 +10,6 @@ include = ["Cargo.toml", "LICENSE", "README.md", "src/main.rs"]
 
 [dependencies]
 getopts = "0.2"
-kiss3d = "0.12"
-nalgebra = "0.13"
+kiss3d = "0.16.4"
+nalgebra = "0.16.6"
 rand = "0.4"
