@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2018-2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,20 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#![feature(nll)]
-
-extern crate getopts;
-extern crate kiss3d;
-extern crate nalgebra;
-extern crate rand;
-
 use getopts::Options;
 use kiss3d::camera::ArcBall;
 use kiss3d::light::Light;
+use kiss3d::nalgebra::core::Vector3;
+use kiss3d::nalgebra::geometry::{Point3, Translation3};
 use kiss3d::scene::SceneNode;
 use kiss3d::window::Window;
-use nalgebra::core::Vector3;
-use nalgebra::geometry::{Point3, Translation3};
 use rand::random;
 use std::collections::HashMap;
 use std::time::{Duration, Instant};
@@ -225,8 +218,7 @@ impl Net {
             }
         }
         for (a, b) in collisions {
-            let t =
-                Translation3::from_vector((self.node(a).position() + self.node(a).position()) / 2.);
+            let t = Translation3::from((self.node(a).position() + self.node(a).position()) / 2.);
             match (self.node(a).agent, self.node(b).agent) {
                 (Agent::Construct(_), Agent::Construct(_)) => self.eval_cc(a, b),
                 (Agent::Construct(_), Agent::Duplicate(_)) => self.eval_cd(a, b, t),
@@ -276,7 +268,7 @@ impl Net {
         for (&a, n) in self.nodes.iter_mut() {
             n.velocity += accelerations.get(&a).unwrap();
             n.scene
-                .append_translation(&Translation3::from_vector(0.1 * n.velocity));
+                .append_translation(&Translation3::from(0.1 * n.velocity));
         }
     }
 
@@ -292,7 +284,7 @@ impl Net {
                 next += Duration::from_secs(10);
                 count = 0;
             }
-            for _ in 0 .. n {
+            for _ in 0..n {
                 self.step();
             }
             if v {
@@ -322,7 +314,7 @@ fn main() {
     opts.optflag("v", "", "show principal edges");
     let matches = match opts.parse(&args) {
         Ok(m) => m,
-        Err(f) => panic!(f.to_string()),
+        Err(f) => panic!("{}", f),
     };
     let v = matches.opt_present("v");
     let n = matches
